@@ -135,6 +135,11 @@ const AttemptQuiz = () => {
     </div>
   ) : (
     <>
+    <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+  <Examcamera />
+</div>
+
+
       <div
         className="container"
         style={{

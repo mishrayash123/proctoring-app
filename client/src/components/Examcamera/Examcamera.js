@@ -66,7 +66,7 @@ const ExamCamera= () => {
     faceDetectionRef.current = faceDetection;
     
 
-    if (webRef.current) {
+    if (webRef.current && webRef.current.video) {
       const camera = new Camera(webRef.current.video, {
         onFrame: async () => {
           // Proceed frames only if real time detection is on
@@ -104,6 +104,7 @@ const ExamCamera= () => {
       <p className="cheatingStatus">Cheating status: {chetingStatus}</p>
 
         <Webcam
+          style={{  height: '60vh', width: '60vw' }}
           className="camera"
           ref={webRef}
           screenshotFormat="image/jpeg"
