@@ -3,12 +3,9 @@ const teacher = require("../models/users/teacher");
 const student = require("../models/users/student");
 
 const jwt = require("jsonwebtoken");
-const dotenv = require("dotenv");
 const bcrypt = require("bcryptjs");
 
-dotenv.config({
-  path: "src/config/config.env",
-});
+
 
 const login = async (req, res) => {
   const { role, email, password } = req.body;
@@ -28,7 +25,7 @@ const login = async (req, res) => {
       }
       const token = jwt.sign(
         { id: exAdmin._id, role: exAdmin.role },
-        process.env.TOKEN_SECRET
+        "majorauth"
       ); 
 
       return res.status(200).send({
@@ -58,7 +55,7 @@ const login = async (req, res) => {
       }
       const token = jwt.sign(
         { id: exTeacher, role: exTeacher.role },
-        process.env.TOKEN_SECRET
+        "majorauth"
       ); 
       return res.status(200).send({
         token: token,
@@ -87,7 +84,7 @@ const login = async (req, res) => {
       }
       const token = jwt.sign(
         { id: exStudent, role: exStudent.role },
-        process.env.TOKEN_SECRET
+        "majorauth"
       );
       return res.status(200).send({
         token: token,
@@ -105,7 +102,7 @@ const login = async (req, res) => {
 
 const presistLogin = async (req, res) => {
   const { token } = req.body;
-  const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
+  const decodedToken = jwt.verify(token,"majorauth");
   if (decodedToken.role === "admin") {
     try {
       const exAdmin = await admin.findById(decodedToken.id);

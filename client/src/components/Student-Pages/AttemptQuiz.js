@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Card, Spin, message, Typography, Button, Statistic } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import Examcamera from '../Examcamera/Examcamera'
 import {
   clearErrors,
   getQuiz,
@@ -125,8 +126,11 @@ const AttemptQuiz = () => {
       dispatch(clearErrors());
     }
   }, [error]);
+
+
   return loading ? (
     <div className="loading">
+      <Examcamera />
       <Spin size="large" />
     </div>
   ) : (

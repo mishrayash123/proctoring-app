@@ -14,16 +14,16 @@ const {
 } = require("../controllers/teacherController");
 
 //add
-router.route("/addCourse/:id").post(authenticateJWT, addCourse); //teacher id
-router.route("/addStudent/:id").post(authenticateJWT, addStudent); //teacher id
-router.route("/addQuiz/:id").post(authenticateJWT, addQuiz); //course id
-router.route("/addQuizCsv/:id").post(authenticateJWT, addQuizCsv); //course id
-router.route("/enrollStudents/:id").post(authenticateJWT, enrollStudents); //course id
+router.route("/addCourse/:id").post( addCourse); //teacher id
+router.route("/addStudent/:id").post( addStudent); //teacher id
+router.route("/addQuiz/:id").post( addQuiz); //course id
+router.route("/addQuizCsv/:id").post( addQuizCsv); //course id
+router.route("/enrollStudents/:id").post( enrollStudents); //course id
 
 //get
-router.route("/getMyCourses/:id").get(authenticateJWT, getMyCourses); //teacher id
-router.route("/getStudents").get(authenticateJWT, getStudents);
-router.route("/getCourseQuizes/:id").get(authenticateJWT, getCourseQuizes); //course id
-router.route('/getResults/:id').get(authenticateJWT, getResults); //student id
+router.route("/getMyCourses/:id").get( getMyCourses); //teacher id
+router.route("/getStudents").get( getStudents);
+router.route("/getCourseQuizes/:id").get( getCourseQuizes); //course id
+router.route('/getResults/:id').get( getResults); //student id
 
 module.exports = router;

@@ -14,15 +14,15 @@ const { getCourseQuizes } = require("../controllers/teacherController");
 const router = express.Router();
 
 // create
-router.route("/addTeacher").post(authenticateJWT, addTeacher);
+router.route("/addTeacher").post( addTeacher);
 
 //get
-router.route("/getTeachers").get(authenticateJWT, getTeachers);
-router.route("/getStudents").get(authenticateJWT, getStudents);
-router.route("/getQuizes").get(authenticateJWT, getQuizes);
-router.route("/getCourses").get(authenticateJWT, getCourses);
-router.route("/getResults/:id").get(authenticateJWT, getResults); // student id //quiz id
-router.route("/getCourseQuizes/:id").get(authenticateJWT, getCourseQuizes) // course id
+router.route("/getTeachers").get( getTeachers);
+router.route("/getStudents").get( getStudents);
+router.route("/getQuizes").get( getQuizes);
+router.route("/getCourses").get( getCourses);
+router.route("/getResults/:id").get( getResults); // student id //quiz id
+router.route("/getCourseQuizes/:id").get( getCourseQuizes) // course id
 
 
 module.exports = router;

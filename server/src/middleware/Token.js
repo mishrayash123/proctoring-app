@@ -1,9 +1,4 @@
 const jwt = require("jsonwebtoken");
-const dotenv = require("dotenv");
-const path = require("path");
-dotenv.config({
-  path: "src/config/config.env",
-});
 
 
 const authenticateJWT = (req, res, next) => {
@@ -11,7 +6,7 @@ const authenticateJWT = (req, res, next) => {
     const token = req.headers.authorization;
     const decodedToken = jwt.verify(
       token,
-      process.env.TOKEN_SECRET //hide token
+      "majorauth" //hide token
     );
     req.user = {
       userId: decodedToken.id,
