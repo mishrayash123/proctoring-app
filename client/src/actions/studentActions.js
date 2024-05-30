@@ -93,10 +93,10 @@ export const getAllResults = (id) => async (dispatch) => {
     });
   }
 };
-export const antiCheat = (id, stdId) => {return async (dispatch) => {
+export const antiCheat = (id, stdId,cheating) => {return async (dispatch) => {
   try {
     // dispatch({ type: ANTICHEAT_REQUEST }); //unknown error + no need for it
-    const res = await axios.post(`/student/antiCheat/${id}`, { stdId });
+    const res = await axios.post(`/student/antiCheat/${id}`, { stdId ,cheating});
     if(res){
       dispatch({ type: ANTICHEAT_SUCCESS, payload: res.data });
     }

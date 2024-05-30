@@ -60,6 +60,12 @@ const ExamCamera= () => {
 
       const cheatingStatus = getCheatingStatus(lookingLeft, lookingRight);
       setChetingStatus(cheatingStatus);
+      if(lookingRight || lookingLeft){
+        localStorage.setItem("cheating",true);
+      }
+      else{
+        localStorage.setItem("cheating",false);
+      }
     }
 
     faceDetection.onResults(onResult);
@@ -87,7 +93,6 @@ const ExamCamera= () => {
 
       camera.start();
     }
-    console.log(webRef.current)
     return () => {
       faceDetection.close();
     };

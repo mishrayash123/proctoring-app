@@ -11,6 +11,7 @@ import {
   antiCheat,
 } from "../../actions/studentActions";
 const AttemptQuiz = () => {
+  const cheating = localStorage.getItem("cheating");;
   const { Countdown } = Statistic;
   const { Title } = Typography;
   const navigate = useNavigate();
@@ -106,6 +107,7 @@ const AttemptQuiz = () => {
       const late = `Submitted on time`;
       dispatch(attemptQuiz(params.id, _id, submissionArr, late));
       message.success("Quiz submitted successfully");
+      dispatch(antiCheat(params.id, _id,cheating))
       navigate("/student/view-student-result");
     } else {
       const seconds = Math.floor((Date.now() - deadlineStart) / 1000);
@@ -113,6 +115,7 @@ const AttemptQuiz = () => {
       const late = `Submitted ${minutes} minutes / ${seconds} seconds late`;
       dispatch(attemptQuiz(params.id, _id, submissionArr, late));
       message.success("Quiz submitted successfully");
+      dispatch(antiCheat(params.id, _id,cheating))
       navigate("/student/view-student-result");
     }
   };
@@ -192,7 +195,7 @@ const AttemptQuiz = () => {
           onChange={() => {
             if (screen.active) {
             } else {
-              startTest && dispatch(antiCheat(params.id, _id));
+              startTest && dispatch(antiCheat(params.id, _id,cheating));
             }
           }}
           style={{

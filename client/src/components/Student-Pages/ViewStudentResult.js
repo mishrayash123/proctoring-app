@@ -67,13 +67,13 @@ const ViewStudentResult = () => {
                   <span>
                     <strong>Obt Marks:</strong>
                   </span>
-                  {val.antiCheat.length > 0 && <span><strong>Cheating</strong></span>}
+                  <span><strong>Cheating</strong></span>
                 </div>
                 <div>
                   <span>{val.quiz._id}</span>
                   <span>{val.quiz.maxScore}</span>
                   <span>{val.score}</span>
-                  {val.antiCheat.length > 0 && <span>Yes</span>}
+                  {val.antiCheat[0].cheating? <span>Yes</span>:<span>No</span>}
                 <span>{val.lateSubmission}</span>
                 </div>
               </div>

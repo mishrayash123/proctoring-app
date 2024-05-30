@@ -166,7 +166,7 @@ const attemptQuiz = async (req, res) => {
 const cheatingDetection = async (req, res) => {
   try {
     const { id } = req.params;
-    const { stdId } = req.body;
+    const { stdId,cheating} = req.body;
     const exQuiz = await quiz.findById({ _id: id });
     if (!exQuiz) {
       return res.status(404).send({ message: "No quiz found", success: false });
@@ -180,7 +180,7 @@ const cheatingDetection = async (req, res) => {
     const newAntiCheat = new antiCheat({
       student: stdId,
       quiz: id,
-      cheating: true,
+      cheating:cheating,
     });
     await newAntiCheat.save();
     res.status(200).send({ success: true, message: "Cheating detected" });
